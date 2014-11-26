@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/display_main.less.css" class="main-less">
+    <link rel="stylesheet" type="text/css" href="css/design_main.less.css" class="main-less">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <script src="intelxdk.js"></script>
+    <script src="cordova.js"></script>
+    <script type="application/javascript" src="js/jquery.js"></script>
+    <script type="application/javascript" src="marginal/marginal-position.min.js"></script>
+    <script type="application/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/essentials.js"></script>
+      <script>
+      
+      $(function(){
+            color_          = $("#studStat");
+            name_           = $("#username");
+            identification_ = $("#identification");
+            balance_        = $("#balance");
+            barcode_        = $("#code");
+          
+          person = localStorage.getItem("current");
+            
+          a = JSON.parse(localStorage.getItem(person));
+          
+          if( a.bal > 0){
+             color_.css("background","red");
+          }else{
+              color_.css("background","green");
+          }
+        
+          console.log(a);
+          
+          name_.html(a.name);
+          identification_.html(a.id)
+          balance_.html(a.bal)
+          barcode_.html(person);
+          
+          
+          
+      });
+      
+      </script>
+    
+  </head>
+
+  <body>
+    <div>
+      <!-- THE CUSTOM HEADER -->
+      <div style="margin-top:0 !important; background: url('images/bg.jpeg'); min-height: 60px !important; width:100% !important; font-weight: bold;" align="center">
+
+        <button class="btn widget uib_w_1 d-margins btn-lg btn-primary Eighty" data-uib="twitter%20bootstrap/button" data-ver="0" style="margin-top:5px;" onclick="javascript:intel.xdk.device.scanBarcode();"><i class="glyphicon glyphicon-barcode button-icon-left" data-position="left"></i>Scan Code</button>
+        <span class="uib_shim "></span>
+
+      </div>
+      <!-- THE ACTUAL APPLICATION DATA -->
+
+      <div style="margin-top:5px !important;">
+
+        <div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
+          <div class="col uib_col_4 col-0_12-12 kuler_purple" data-uib="layout/col" data-ver="0">
+            <div class="widget-container content-area center-h-v-col">
+
+              <div class="well no_wrap  widget uib_w_1 d-margins well-lg blacker" data-uib="twitter%20bootstrap/well" data-ver="0">
+                <div class="col uib_col_5 single-col" data-uib="layout/col" data-ver="0">
+                  <div class="widget-container content-area vertical-col">
+
+                    <div class="alert no_wrap widget uib_w_2 d-margins alert-info" data-uib="twitter%20bootstrap/alert" data-ver="0" id="studStat"></div>
+                    <div class="list-group widget uib_w_3 d-margins" data-uib="twitter%20bootstrap/list_group" data-ver="0">
+                      <a class="list-group-item allow-badge widget uib_w_4" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="username">
+
+                      </a>
+                      <a class="list-group-item allow-badge widget uib_w_5" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="identification">
+
+                      </a>
+                      <a class="list-group-item allow-badge widget uib_w_6" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="balance">
+
+                      </a>
+                      <a class="list-group-item allow-badge widget uib_w_7 darker" data-uib="twitter%20bootstrap/list_item" data-ver="0">
+
+                        <p class="list-group-item-text" id="studId">CONFIRMATION_CODE</p>
+                      </a>
+                      <a class="list-group-item allow-badge widget uib_w_5 kuler_purple" data-uib="twitter%20bootstrap/list_item" data-ver="0" id="code">
+
+                      </a>
+                    </div><span class="uib_shim"></span>
+                  </div>
+                </div>
+              </div><span class="uib_shim"></span>
+            </div>
+          </div>
+          <span class="uib_shim"></span>
+        </div>
+
+      </div>
+
+    </div>
+  </body>
+
+</html>
